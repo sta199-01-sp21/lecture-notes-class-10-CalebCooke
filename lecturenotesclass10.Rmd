@@ -164,7 +164,12 @@ roll_results <- tibble(
 ```
 
 ```{r identify_events}
-
+roll_results <- tibble(
+  die_1 = replicate(n = 10000, expr = sample(1:6, size = 1)),
+  die_2 = replicate(n = 10000, expr = sample(1:6, size = 1)))
+roll_results <- roll_results %>% 
+  mutate(event_1 = die_1 ^ 2 == die_2,
+         event_2 = abs(die_1 - die_2) == 4)
 
 
 ```
